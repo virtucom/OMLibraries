@@ -74,6 +74,12 @@ uint8_t OMMotor::m_easeType = OM_MOT_LINEAR;
 OMMotor::s_splineCal OMMotor::m_splineOne = { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 };
 OMMotor::s_splineCal OMMotor::m_splinePlanned = { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 };
 
+unsigned int OM_MOT_DSTEP = 9;
+unsigned int OM_MOT_DDIR = 4;
+unsigned int OM_MOT_DSLP = 17;
+unsigned int OM_MOT_DMS1 = 14;
+unsigned int OM_MOT_DMS2 = 15;
+unsigned int OM_MOT_DMS3 = 16;
 /** Constructor
 
   Creates a new instance of the OMMotor class. Sets all control outputs to the
@@ -319,19 +325,13 @@ Arduino and step-directection controller
 params will be in order : step, dir, sleep, ms1, ms2 and ms3, all of them unsigned ints.
 */
 
-void OMMotor::changePins(unsigned int step, unsigned int dir, unsigned int sleep, unsigned int ms1, unsigned int ms2, unsigned int ms3) {
-  #undef OM_MOT_DSTEP
-  #define OM_MOT_DSTEP step
-  #undef OM_MOT_DDIR
-  #define OM_MOT_DDIR dir
-  #undef OM_MOT_DSLP
-  #define OM_MOT_DSLP sleep
-  #undef OM_MOT_DMS1
-  #define OM_MOT_DMS1 ms1
-  #undef OM_MOT_DMS2
-  #define OM_MOT_DMS2 ms2
-  #undef OM_MOT_DMS3
-  #define OM_MOT_DMS3 ms3
+void OMMotor::changePins(unsigned int step, unsigned int dir, unsigned int slp, unsigned int ms1, unsigned int ms2, unsigned int ms3) {
+  OM_MOT_DSTEP = step;
+  OM_MOT_DDIR = dir;
+  OM_MOT_DSLP = slp;
+  OM_MOT_DMS1 = ms1;
+  OM_MOT_DMS2 = ms2;
+  OM_MOT_DMS3 = ms3;
 }
 
 /** Set Backlash Compensation Amount

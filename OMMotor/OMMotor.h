@@ -35,7 +35,7 @@ See www.openmoco.org for more information
 
 
  // DEFAULT PIN ASSIGNMENTS
-
+/* Changed for global vars in OMMotor.cpp
 #ifndef OM_MOT_DSTEP
     #define OM_MOT_DSTEP	9
 #endif
@@ -54,6 +54,7 @@ See www.openmoco.org for more information
 #ifndef OM_MOT_DMS3
     #define OM_MOT_DMS3	16
 #endif
+*/
 #ifndef OM_MOT_STPREG
     #define OM_MOT_STPREG     PORTB
 #endif
