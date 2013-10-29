@@ -434,6 +434,8 @@ public:
 	void backlash(uint8_t);
 	uint8_t backlash();
 	
+  void changePins(unsigned int, unsigned int, unsigned int, unsigned int, unsigned int, unsigned int);
+
 	void setHandler(void(*)(uint8_t));
 	
 	void maxStepRate(unsigned int);

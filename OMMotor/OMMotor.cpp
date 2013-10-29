@@ -311,6 +311,29 @@ uint8_t OMMotor::backlash() {
 	return(m_backAdj);
 }
 
+/** Redefine Arduino pins
+
+Change deault nanoMoCo pin asignment to implement motor control with compatible
+Arduino and step-directection controller
+
+params will be in order : step, dir, sleep, ms1, ms2 and ms3, all of them unsigned ints.
+*/
+
+void OMMotor::changePins(unsigned int step, unsigned int dir, unsigned int sleep, unsigned int ms1, unsigned int ms2, unsigned int ms3) {
+  #undef OM_MOT_DSTEP
+  #define OM_MOT_DSTEP step
+  #undef OM_MOT_DDIR
+  #define OM_MOT_DDIR dir
+  #undef OM_MOT_DSLP
+  #define OM_MOT_DSLP sleep
+  #undef OM_MOT_DMS1
+  #define OM_MOT_DMS1 ms1
+  #undef OM_MOT_DMS2
+  #define OM_MOT_DMS2 ms2
+  #undef OM_MOT_DMS3
+  #define OM_MOT_DMS3 ms3
+}
+
 /** Set Backlash Compensation Amount
 
   Sets the current backlash compensation amount.
